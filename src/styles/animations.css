@@ -1,0 +1,45 @@
+/* Button transitions & active scales */
+.btn {
+  transition: transform .06s ease, filter .15s ease, box-shadow .15s ease;
+}
+
+.btn:active {
+  transform: translateY(1px);
+}
+
+.recbtn {
+  transition: transform .06s ease, filter .12s ease, box-shadow .12s ease, opacity .12s ease;
+}
+
+.recbtn:active {
+  transform: translateY(1px);
+}
+
+.opd__suggest-btn {
+  transition: background .12s ease, transform .06s ease;
+}
+
+.opd__suggest-btn:hover {
+  background: #dbe8f7;
+}
+
+.opd__suggest-btn:active {
+  transform: translateY(1px);
+}
+
+.suggest-bubble__close {
+  transition: background .12s ease, color .12s ease;
+}
+
+.suggest-bubble__close:hover {
+  background: #ffffff;
+  color: #234f92;
+}
+
+.btn--primary:hover {
+  filter: brightness(1.02);
+}
+
+.btn--dark:hover {
+  filter: brightness(1.03);
+}

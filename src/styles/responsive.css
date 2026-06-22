@@ -1,0 +1,22 @@
+@media (max-width: 980px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card {
+    min-height: unset;
+  }
+  
+  .btn--wide {
+    width: 100%;
+    max-width: 360px;
+  }
+  
+  .report-box {
+    height: 135px;
+  }
+
+  .opd__grid {
+    grid-template-columns: 1fr;
+  }
+}

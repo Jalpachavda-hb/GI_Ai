@@ -1,0 +1,22 @@
+:root {
+  --bg: #f2f7ff;
+  --card: #ffffff;
+  --text: #19468d;
+  --muted: #7c8ea3;
+  --line: #dbe8f7;
+  --accent-red: #a81e25;
+  --btn-blue: #19468d;
+  --btn-blue-2: #19468d;
+  --btn-dark: #173f7a;
+  --btn-dark-2: #1e4e93;
+  --shadow: 0 16px 42px rgba(15, 38, 70, .10);
+  --radius: 24px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+}
