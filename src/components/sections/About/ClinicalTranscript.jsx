@@ -1,7 +1,7 @@
 import React from 'react';
 import SectionTitle from '@/components/common/SectionTitle/SectionTitle';
 
-export default function ClinicalTranscript({ value, onChange, onGenerate, isGenerating, isTranscribing }) {
+export default function ClinicalTranscript({ value, onGenerate, isGenerating, isTranscribing }) {
   const fileIcon = (
     <svg viewBox="0 0 24 24" fill="none">
       <path d="M9 12h6" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
@@ -26,7 +26,7 @@ export default function ClinicalTranscript({ value, onChange, onGenerate, isGene
           className="textarea"
           placeholder="Medical dictation will appear here..."
           value={value}
-          onChange={(e) => onChange(e.target.value)}
+          readOnly
           disabled={isTranscribing}
         />
         {isTranscribing && (
