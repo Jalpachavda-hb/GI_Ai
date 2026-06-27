@@ -7,11 +7,6 @@ import SuggestionPopup from '@/components/sections/Contact/SuggestionPopup';
 import Chatbot from '@/components/common/Chatbot/Chatbot';
 import { API_PATHS } from '@/apipath';
 
-const DEFAULT_GENERAL_EXAMINATION = `Patient is conscious, cooperative, well-oriented to time, place, and person. She appears anxious but comfortable, sitting on the examination table without any distress. Vital signs: Pulse rate 82 beats per minute, regular in rhythm and volume. Blood pressure 128/84 mmHg in the right arm sitting position. Respiratory rate 18 breaths per minute, regular and unlabored. Temperature is afebrile (98.4°F). No pallor, icterus, cyanosis, clubbing, or lymphadenopathy noted. Nutritional status is average, with a BMI of 26.5 kg/m² (overweight).`;
-
-const DEFAULT_PREVIOUS_INVESTIGATION = `Upper GI Endoscopy with Biopsy (Pre-operative): Revealed sliding hiatus hernia with short segment Barrett's esophagus; biopsy showed no evidence of eosinophilic esophagitis or dysplasia.
-CT Scan Abdomen (Post-operative): Showed status post-robotic fundoplication with sliding hiatus hernia, mild hepatic steatosis, and no significant mediastinal or peritoneal pathology.`;
-
 export default function Home() {
   const [transcript, setTranscript] = useState('');
   const [isGenerated, setIsGenerated] = useState(false);
@@ -69,10 +64,10 @@ export default function Home() {
 
       const result = await response.json();
       
-      if (result.success && result.data?.transcript) {
-        setTranscript(result.data.transcript);
-      } else if (result.transcript) {
-        setTranscript(result.transcript);
+      if (result.success && result.data?.transcript_show) {
+        setTranscript(result.data.transcript_show);
+      } else if (result.transcript_show) {
+        setTranscript(result.transcript_show);
       } else {
         throw new Error(result.error_message || 'Failed to extract transcript from response');
       }
@@ -135,10 +130,10 @@ export default function Home() {
         pastOperation: extractField('pastOperation', 'past_operation'),
         pastMedication: extractField('pastMedication', 'past_medication'),
         associatedDisease: extractField('associatedDisease', 'associated_disease', ['associated_diseases']),
-        previousInvestigation: extractedPrevInvestigation.trim() ? extractedPrevInvestigation : DEFAULT_PREVIOUS_INVESTIGATION,
+        previousInvestigation: extractedPrevInvestigation.trim() ? extractedPrevInvestigation : '',
         personalHistory: extractField('personalHistory', 'personal_history'),
         familyHistory: extractField('familyHistory', 'family_history'),
-        generalExam: extractedGeneralExam.trim() ? extractedGeneralExam : DEFAULT_GENERAL_EXAMINATION,
+        generalExam: extractedGeneralExam.trim() ? extractedGeneralExam : '',
         abdominalExam: extractField('abdominalExam', 'abdominal_exam', ['abdominal_examination']),
         provisionalDx: extractField('provisionalDx', 'provisional_diagnosis', ['provisional_dx']),
         suggestiveInvestigations: extractField('suggestiveInvestigations', 'suggestive_investigations'),
@@ -167,11 +162,11 @@ export default function Home() {
         pastOperation: '',
         pastMedication: '',
         associatedDisease: '',
-        previousInvestigation: DEFAULT_PREVIOUS_INVESTIGATION,
+        previousInvestigation: extractedPrevInvestigation.trim() ? extractedPrevInvestigation : '',
         personalHistory: '',
         familyHistory: '',
-        generalExam: generalExamination.trim() ? generalExamination : DEFAULT_GENERAL_EXAMINATION,
-        abdominalExam: generalExamination ? generalExamination : 'Normal',
+        generalExam: extractedGeneralExam.trim() ? extractedGeneralExam : '',
+        abdominalExam: generalExamination ? generalExamination : '',  
         provisionalDx: pick('Assessment'),
         suggestiveInvestigations: '',
         advice: pick('Plan')
