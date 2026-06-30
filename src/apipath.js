@@ -1,10 +1,9 @@
 // Toggle between local and live API environments here
 const IS_LIVE = true; // Set to true to switch to the live API environment
 
-// const BASE_URL_LOCAL = 'http://192.168.29.201:8001/api/v1';
-const BASE_URL_LOCAL = 'http://192.168.29.201:8001/api/v1';
-// const BASE_URL_LIVE = 'http://10.156.121.233:8081/api/v1';   === hb 
-const BASE_URL_LIVE = 'http://10.156.121.70:8081/api/v1';
+
+const BASE_URL_LIVE = 'http://192.168.29.201:8000/api/v1';  
+
 
 export const BASE_URL = IS_LIVE ? BASE_URL_LIVE : BASE_URL_LOCAL;
 
